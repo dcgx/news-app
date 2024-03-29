@@ -1,3 +1,5 @@
 <template>
-    <h1>How To Install Vue 3 in Laravel 10 : ZWebCourses :)</h1>
+    <div class="flex justify-center items-center h-screen">
+        <h1 class="text-3xl text-purple-600 font-bold">NewsApp</h1>
+    </div>
 </template>
