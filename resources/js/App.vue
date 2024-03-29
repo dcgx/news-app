@@ -1,35 +1,42 @@
 <template>
     <main class="container mx-auto px-4 py-8">
         <div
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+            class="d-flex align-items-center justify-content-center"
+            v-if="isLoading"
         >
+            <p class="text-center">Cargando noticias...</p>
+            <div class="loader"></div>
+        </div>
+        <div class="row">
             <div
-                class="max-w-sm rounded overflow-hidden shadow-lg"
+                class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"
                 v-for="(article, index) in articles"
                 :key="index"
             >
-                <img
-                    class="w-full"
-                    :src="article.urlToImage"
-                    :alt="article.title"
-                />
-                <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">
-                        {{ article.title }}
+                <div class="card">
+                    <img
+                        :src="article.urlToImage"
+                        :alt="article.title"
+                        class="card-img-top"
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">{{ article.title }}</h5>
+                        <p class="card-text">{{ article.description }}</p>
+                        <p class="card-text">
+                            <a class="text-muted" :href="'mailto:' + article.randomUser.email"
+                                >Autor: {{ article.randomUser.name }}</a
+                            >
+                        </p>
                     </div>
-                    <p class="text-gray-700 text-base">
-                        {{ article.description }}
-                    </p>
-                    <p class="text-gray-600 text-sm mt-2">Autor: Lloyd Lee</p>
-                </div>
-                <div class="px-6 py-4">
-                    <a
-                        :href="article.url"
-                        target="_blank"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    >
-                        Leer más
-                    </a>
+                    <div class="card-footer bg-transparent border-0">
+                        <a
+                            :href="article.url"
+                            target="_blank"
+                            class="btn btn-primary"
+                        >
+                            Leer más
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -40,6 +47,7 @@
 import axios from "axios";
 import { onMounted, ref } from "vue";
 
+const isLoading = ref(false);
 const articles = ref();
 const totalResults = ref(0);
 
@@ -49,12 +57,15 @@ onMounted(async () => {
 
 const getAllNews = async () => {
     try {
+        isLoading.value = true;
         const { data } = await axios.get("http://localhost:8000/api/news");
         if (data) {
             articles.value = data.articles;
         }
+        isLoading.value = false;
     } catch (error) {
         console.error(error);
+        isLoading.value = false;
     }
 };
 </script>

@@ -136,8 +136,9 @@ return [
         'api_key' => env('NEWS_API_KEY', 'b733359f10bd4092916bff02e3d969c3'),
     ],
 
-    'randomuser' => [
-        'api_url' => env('RANDOMUSER_API_URL', 'https://randomuser.me/api/'),
+    'random_user' => [
+        'api_url' => env('RANDOM_USER_API_URL', 'https://randomuser.me/api/'),
+        'api_key' => env('RANDOM_USER_API_KEY', 'V4X8-Z534-A1U7-35WK'),
     ],
 
 ];
