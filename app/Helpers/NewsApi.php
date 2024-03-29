@@ -23,7 +23,7 @@ class NewsApi
 
     public function fetchAllNews($params = [])
     {
-        $path = 'everything?q=news';
+        $path = 'everything?q=news&' . Arr::query($params);
         return $this->makeCall($path);
     }
 
