@@ -16,7 +16,6 @@ class RandomUserApi
     {
         $client = new \GuzzleHttp\Client();
         $full_url = config('app.random_user.api_url') . '?' . http_build_query($options);
-        $api_key = config('app.random_user.api_key');
         $response = $client->request('GET', $full_url);
         return json_decode($response->getBody()->getContents(), true);
     }

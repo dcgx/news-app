@@ -119,7 +119,7 @@ const getAllNews = async () => {
     try {
         isLoading.value = true;
         const { data } = await axios.get(
-            `http://localhost:8000/api/news?pageSize=${pageSize}&page=${currentPage.value}`
+            `${import.meta.env.VITE_APP_API_URL}/news?pageSize=${pageSize}&page=${currentPage.value}`
         );
         if (data) {
             articles.value = data.articles;
