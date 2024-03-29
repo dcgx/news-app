@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Helpers;
 
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Arr;
 
 /**
- * Class Api
+ * Class NewsApi
  * @package App
  */
 class NewsApi

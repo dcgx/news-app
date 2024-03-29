@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Helpers\NewsApi;
 
 class NewsController extends Controller
 {
     public function index()
     {
-        $news = new \App\NewsApi();
-        $data = $news->fetchAllNews();
+        $newsApi = new NewsApi();
+        $data = $newsApi->fetchAllNews();
         return response()->json($data);
     }
 }
