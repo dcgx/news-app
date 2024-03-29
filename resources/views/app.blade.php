@@ -20,9 +20,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <!-- Aquí puedes agregar más elementos de navegación si es necesario -->
-                        </ul>
+                        <ul class="navbar-nav ms-auto"></ul>
                     </div>
                 </div>
             </nav>
